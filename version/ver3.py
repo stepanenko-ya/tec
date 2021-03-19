@@ -601,7 +601,7 @@ tables = {
                     {"name": "SortNo", "length": 3},
                     {"name": "CritNo", "length": 4},
                     {"name": "CritVal", "length": 20},
-                    {"name": "Reserved", "length": 1},
+                    {"name": "Reserv", "length": 1},
                     {"name": "SeqNo1", "length": 3},
                     {"name": "D_leteFlag", "length": 1}
                 ],
@@ -797,7 +797,7 @@ tables = {
                     {"name": "TermNo", "length": 9},
                     {"name": "OK_PC", "length": 1},
                     {"name": "OK_CV", "length": 1},
-                    {"name": "OK_CV", "length": 1},
+                    {"name": "OK_Eng", "length": 1},
                     {"name": "OK_Universal", "length": 1},
                     {"name": "OK_Ind", "length": 1},
                     {"name": "D_lete", "length": 1},

@@ -888,8 +888,8 @@ tables = {
                     {"name": "LfdNr", "length": 3},
                     {"name": "LKZ", "length": 3},
                     {"name": "KritNr", "length": 4},
-                    {"name": "210", "length": 1},
-                    {"name": "400", "length": 1},
+                    {"name": "_210_", "length": 1},
+                    {"name": "_400_", "length": 1},
                     {"name": "Exclude", "length": 1},
                     {"name": "Flag", "length": 1}
                 ],

@@ -10,7 +10,7 @@ conn = psycopg2.connect(
     host='localhost',
     user='stepanenko',
     password='Stomatolog',
-    database='ddd',
+    database='test2',
     )
 db = conn.cursor()
 
@@ -25,11 +25,12 @@ def create_table(tab_num):
     for col in tab:
         column_name += col["name"] + " nchar(" + str(col["length"]) + "), "
 
-    command_create = "CREATE TABLE IF NOT EXISTS  schema_name.t" + tab_num + " (" + column_name[:-2] + " )"
+    command_create = "CREATE TABLE IF NOT EXISTS  dbo.t" + tab_num + " (" + column_name[:-2] + " )"
 
     db.execute(command_create)
     conn.commit()
     return tab_num
+
 
 def file_parsing(unpack_file):
     path_to_file = "unpacked_data" + "/" + unpack_file
@@ -56,10 +57,11 @@ def file_parsing(unpack_file):
                 file_intermedia.writelines(string_data)
             else:
                 file_intermedia.writelines(string_data + '\n')
+
         file_intermedia.close()
-    f_csv = open('/home/stepanenko/Projects/test/test/intermediate.csv', 'r')
+    f_csv = open('/home/stepanenko/Projects/expiriment/experiment/intermediate.csv', 'r')
     db.execute(
-        "copy schema_name.t" + tab_num + " from '/home/stepanenko/Projects/test/test/intermediate.csv' DELIMITER '{' QUOTE E'\b' CSV ")
+        "copy schema_name.t" + tab_num + " from '//home/stepanenko/Projects/expiriment/experiment/intermediate.csv' DELIMITER '{' QUOTE E'\b' CSV ")
     conn.commit()
     f_csv.close()
     path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'intermediate.csv')
@@ -70,7 +72,7 @@ def main(unpak_files):
     for file in unpak_files:
         if file[-3:] != "GIF":
             create_table(file[:3])
-            file_parsing(file)
+            # file_parsing(file)
     shutil.rmtree("unpacked_data")
     os.remove("archives/" + arch_file)
 
@@ -97,9 +99,11 @@ if __name__ == '__main__':
             all_files = os.listdir("unpacked_data")
             main(all_files)
         else:
+            print(arch_file)
             pass
-    print(len(tab_for_update), update_lst)
 
+            # path = os.path.join(os.path.abspath(os.path.dirname(__file__)), "/home/stepanenko/Projects/test/test/archives/" + arch_file + "")
+            # os.remove(path)
 
 
 
